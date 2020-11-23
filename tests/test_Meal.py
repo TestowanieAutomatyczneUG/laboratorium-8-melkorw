@@ -14,6 +14,17 @@ class TestMeal(unittest.TestCase):
         response = self.temp.get_meals('Arrabiatas')
         self.assertEqual('Meal does not exist', response)
 
+    def test_get_meal_with_id(self):
+        self.assertEqual('52771', self.temp.get_meal(
+            'Arrabiata', 0)['idMeal'])
+
+    def test_get_meal_with_not_existing_id(self):
+        self.assertEqual('There is no meal with given ID', self.temp.get_meal(
+            'Arrabiata', 2))
+
+    def test_get_meal_not_existing_meal(self):
+        self.assertEqual('Meal does not exist', self.temp.get_meal(
+            'Arrabiatass', 2))
 
     def tearDown(self):
         self.temp = None
