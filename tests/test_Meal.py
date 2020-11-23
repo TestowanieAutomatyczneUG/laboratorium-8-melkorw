@@ -10,5 +10,10 @@ class TestMeal(unittest.TestCase):
         response = self.temp.get_meals('Arrabiata')
         self.assertEqual(1, len(response))
 
+    def test_get_meals_null(self):
+        response = self.temp.get_meals('Arrabiatas')
+        self.assertEqual('Meal does not exist', response)
+
+
     def tearDown(self):
         self.temp = None
