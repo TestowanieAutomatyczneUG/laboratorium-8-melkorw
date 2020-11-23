@@ -3,8 +3,12 @@ from src.meal.meal import Meal
 
 
 class TestMeal(unittest.TestCase):
-    def tearUp(self):
+    def setUp(self):
         self.temp = Meal()
-    def test_get_meal(self):
-        response = self.temp.get_meal('Arrabiata')
-        self.assertEqual('52771', response['meals']['idMeal'])
+
+    def test_get_meals(self):
+        response = self.temp.get_meals('Arrabiata')
+        self.assertEqual(1, len(response))
+
+    def tearDown(self):
+        self.temp = None
